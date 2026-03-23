@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>『星空ダイアリー』公式コミック紹介ページ</title>
+
+  <!-- Google Fonts 例（任意） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- リセット簡易版 -------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.7; color:#333; background:#fafafa; }
+
+    /* --- 共通 ------------------------------ */
+    a{ color:#1e90ff; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    img{ width:100%; height:auto; display:block; }
+
+    .container{ width:90%; max-width:1080px; margin:0 auto; }
+
+    h1,h2,h3{ font-weight:700; line-height:1.3; }
+    h1{ font-size:2.2rem; margin-bottom:1rem;}
+    h2{ font-size:1.8rem; margin:3rem 0 1.2rem; position:relative;}
+    h2::after{
+        content:''; position:absolute; bottom:-8px; left:0; width:60px; height:4px;
+        background:#1e90ff; border-radius:2px;
+    }
+    h3{ font-size:1.2rem; margin:1.5rem 0 0.7rem; }
+
+    /* --- ヒーローエリア -------------------- */
+    .hero{
+      background:url('images/bg-stars.jpg') center/cover;
+      padding:4rem 0 6rem;
+      color:#fff; text-align:center;
+    }
+    .hero .cover{
+     height: min(70vh, 600px);   /* 画面高の 70% 以内・最大 600px まで */
+     width: auto;                /* 横幅は比率に従って自動計算 */
+     margin:1.5rem auto 0;
+     box-shadow:0 10px 20px rgba(0,0,0,.3);
+    }
+    .hero p{ margin-top:1rem; font-size:1.1rem; }
+
+    /* --- あらすじ -------------------------- */
+    .synopsis{ background:#fff; padding:3rem 0; }
+    .synopsis p{ text-align:justify; }
+
+    
+    /* --- 作者情報 -------------------------- */
+    .author{ display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center; background:#fff; padding:3rem 0; }
+    .author img{ width:160px; border-radius:50%; }
+    .author .bio{ flex:1; min-width:230px; }
+
+    /* --- フッター -------------------------- */
+    footer{ text-align:center; font-size:0.9rem; padding:2rem 0; color:#666; }
+
+    /* --- レスポンシブ調整 ------------------ */
+    @media (max-width:600px){
+      h1{ font-size:1.7rem; }
+      h2{ font-size:1.4rem; }
+      .hero{ padding:3rem 0 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヒーローエリア -->
+  <section class="hero">
+    <div class="container">
+      <h1>星空ダイアリー</h1>
+      <img src="images/cover-vol1.jpg" alt="コミックカバー" class="cover">
+      <p>星を巡る少女とロボットの、きらめく冒険ファンタジー！</p>
+    </div>
+  </section>
+
+  <!-- あらすじ -->
+  <section class="synopsis">
+    <div class="container">
+      <h2>あらすじ</h2>
+      <p>
+        17歳の天体観測好きな少女・ミオは、ある夜、森で不思議なロボット“ポラリス”と出会う。
+        滅びゆく星々を救う使命を背負ったポラリスと共に、ミオは宇宙への旅に出ることを決意するが――。
+        光と闇が交差する銀河を舞台に、友情と別れ、そして家族の秘密が織りなす星空ファンタジー！
+      </p>
+    </div>
+  </section>
+
+  
+
+  <!-- メディア化・掲載情報 -->
+<section class="media">
+  <div class="container">
+    <h2>メディア化情報</h2>
+
+    <!-- カード１：アニメ化決定 -->
+    <div class="media-card">
+      <div class="media-thumb">
+        <img src="images/media_anime.jpg" alt="アニメ化ティザー">
+      </div>
+      <div class="media-body">
+        <h3 class="media-title">TV アニメ化決定！</h3>
+        <p class="media-date">2024-10 放送開始予定（制作：Studio StarGate）</p>
+        <p class="media-desc">
+          コミック第3巻の内容を中心に、完全書き下ろしストーリーも加えて放送予定。続報は公式 X（旧 Twitter）で順次公開します。
+        </p>
+        <a href="https://example.com/anime" target="_blank" class="media-link">特設サイトを見る →</a>
+      </div>
+    </div>
+
+    
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <!-- フッター -->
+  <footer>
+    <p>© 2024 AMEMIYA SEIKO / STARCOMIC PUBLISHING</p>
+  </footer>
+
+  <!-- JS：スライダーをドラックで軽快にスクロールさせるおまけ機能 -->
+  <script>
+    // PCでもドラッグで横スクロール
+    const slider = document.getElementById('sampleSlider');
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', e => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => isDown = false);
+    slider.addEventListener('mouseup', () => isDown = false);
+    slider.addEventListener('mousemove', e => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2; // スクロール速度調整
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+
+</body>
+</html>
